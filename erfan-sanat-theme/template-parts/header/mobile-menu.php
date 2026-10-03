@@ -12,17 +12,17 @@ if ( ! defined( 'ABSPATH' ) ) {
 $phone_display = (string) es_opt( 'contact_phone_main', '۰۳۱-۹۱۰۹۱۰۱۱' );
 $phone_tel     = (string) es_opt( 'contact_phone_tel_link', '03191091011' );
 ?>
-<div id="es-mobile-drawer" class="es-mobile-drawer" aria-hidden="true">
-	<div class="es-mobile-drawer-backdrop" data-close-drawer="true"></div>
+<div id="es-mobile-drawer" class="es-mobile-drawer" aria-hidden="true" hidden>
+	<div class="es-mobile-drawer-backdrop" data-close-drawer="true" data-es-mobile-close="true"></div>
 	<div class="es-mobile-drawer-panel" role="dialog" aria-modal="true" aria-label="<?php esc_attr_e( 'منوی موبایل', 'erfan-sanat' ); ?>">
 		<div class="es-mobile-drawer-head">
 			<div class="es-brand-link">
 				<span class="es-brand-mark"><?php echo esc_html( (string) es_opt( 'brand_badge_text', 'ES' ) ); ?></span>
 				<span class="es-brand-text">
-					<strong><?php esc_html_e( 'عرفان صنعت اصفهان', 'erfan-sanat' ); ?></strong>
+					<strong class="es-brand-title"><?php esc_html_e( 'عرفان صنعت اصفهان', 'erfan-sanat' ); ?></strong>
 				</span>
 			</div>
-			<button type="button" class="es-icon-btn es-mobile-drawer-close" aria-label="<?php esc_attr_e( 'بستن منو', 'erfan-sanat' ); ?>">
+			<button type="button" class="es-icon-btn es-mobile-drawer-close" data-close-drawer="true" data-es-mobile-close="true" aria-label="<?php esc_attr_e( 'بستن منو', 'erfan-sanat' ); ?>">
 				<?php echo erfan_sanat_icon( 'close' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 			</button>
 		</div>
@@ -46,7 +46,7 @@ $phone_tel     = (string) es_opt( 'contact_phone_tel_link', '03191091011' );
 					)
 				);
 			} else {
-				erfan_sanat_fallback_primary_menu();
+				erfan_sanat_fallback_primary_menu( 'es-mobile-nav-list' );
 			}
 			?>
 		</nav>
@@ -54,7 +54,7 @@ $phone_tel     = (string) es_opt( 'contact_phone_tel_link', '03191091011' );
 		<div class="es-mobile-drawer-footer">
 			<a href="tel:<?php echo esc_attr( $phone_tel ); ?>" class="es-btn es-btn-primary es-btn-block">
 				<?php echo erfan_sanat_icon( 'phone', 'es-icon-sm' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
-				<span><?php echo esc_html( erfan_sanat_persian_digits( $phone_display ) ); ?></span>
+				<span dir="ltr"><?php echo esc_html( erfan_sanat_persian_digits( $phone_display ) ); ?></span>
 			</a>
 		</div>
 	</div>

@@ -20,11 +20,15 @@ function erfan_sanat_enqueue_frontend_assets(): void {
 		return;
 	}
 
+	$css_ver = file_exists( ES_THEME_DIR . 'assets/css/theme.css' )
+		? ES_THEME_VERSION . '.' . (string) filemtime( ES_THEME_DIR . 'assets/css/theme.css' )
+		: ES_THEME_VERSION;
+
 	wp_enqueue_style(
 		'erfan-sanat-theme',
 		ES_THEME_URI . 'assets/css/theme.css',
 		array(),
-		ES_THEME_VERSION
+		$css_ver
 	);
 
 	wp_add_inline_style( 'erfan-sanat-theme', erfan_sanat_get_dynamic_css() );
@@ -36,11 +40,15 @@ function erfan_sanat_enqueue_frontend_assets(): void {
 		$script_args['strategy'] = 'defer';
 	}
 
+	$js_ver = file_exists( ES_THEME_DIR . 'assets/js/theme.js' )
+		? ES_THEME_VERSION . '.' . (string) filemtime( ES_THEME_DIR . 'assets/js/theme.js' )
+		: ES_THEME_VERSION;
+
 	wp_enqueue_script(
 		'erfan-sanat-theme',
 		ES_THEME_URI . 'assets/js/theme.js',
 		array(),
-		ES_THEME_VERSION,
+		$js_ver,
 		$script_args
 	);
 

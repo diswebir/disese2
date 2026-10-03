@@ -12,16 +12,21 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-$company_name  = (string) es_opt( 'company_legal_name', 'عرفان صنعت اصفهان' );
-$tagline       = (string) es_opt( 'company_tagline', 'نورپردازی شهری و المان‌های نوری' );
-$badge_text    = (string) es_opt( 'brand_badge_text', 'ES' );
-$cta_text      = (string) es_opt( 'header_cta_text', 'دریافت مشاوره رایگان' );
-$cta_url       = (string) es_opt( 'header_cta_url', '#consultation' );
-$show_search   = (bool) es_opt( 'header_show_search', true );
-$cart_count    = erfan_sanat_get_cart_count();
-$cart_url      = function_exists( 'wc_get_cart_url' ) ? wc_get_cart_url() : home_url( '/cart/' );
+$company_name = (string) es_opt( 'company_legal_name', 'عرفان صنعت اصفهان' );
+$tagline      = (string) es_opt( 'company_tagline', 'نورپردازی شهری و المان‌های نوری' );
+$badge_text   = (string) es_opt( 'brand_badge_text', 'ES' );
+$cta_text     = (string) es_opt( 'header_cta_text', 'دریافت مشاوره رایگان' );
+$cta_url      = (string) es_opt( 'header_cta_url', '#consultation' );
+$show_search  = (bool) es_opt( 'header_show_search', true );
+$is_sticky    = (bool) es_opt( 'header_sticky', true );
+$cart_count   = erfan_sanat_get_cart_count();
+$cart_url     = function_exists( 'wc_get_cart_url' ) ? wc_get_cart_url() : home_url( '/cart/' );
+
+if ( str_starts_with( $cta_url, '#' ) && ! is_front_page() ) {
+	$cta_url = home_url( '/' . $cta_url );
+}
 ?>
-<header id="masthead" class="es-site-header" role="banner">
+<header id="masthead" class="es-site-header <?php echo $is_sticky ? 'is-sticky' : ''; ?>" role="banner">
 	<?php get_template_part( 'template-parts/header/top-bar' ); ?>
 
 	<div class="es-header-main">
@@ -58,6 +63,7 @@ $cart_url      = function_exists( 'wc_get_cart_url' ) ? wc_get_cart_url() : home
 					<button
 						type="button"
 						class="es-icon-btn es-search-toggle"
+						data-es-search-toggle="true"
 						aria-expanded="false"
 						aria-controls="es-search-modal"
 						aria-label="<?php esc_attr_e( 'جستجو در محصولات و پروژه‌ها', 'erfan-sanat' ); ?>"
@@ -83,6 +89,7 @@ $cart_url      = function_exists( 'wc_get_cart_url' ) ? wc_get_cart_url() : home
 				<button
 					type="button"
 					class="es-icon-btn es-mobile-menu-toggle"
+					data-es-mobile-toggle="true"
 					aria-expanded="false"
 					aria-controls="es-mobile-drawer"
 					aria-label="<?php esc_attr_e( 'باز کردن منوی موبایل', 'erfan-sanat' ); ?>"
@@ -94,7 +101,7 @@ $cart_url      = function_exists( 'wc_get_cart_url' ) ? wc_get_cart_url() : home
 	</div>
 
 	<?php if ( $show_search ) : ?>
-		<div id="es-search-modal" class="es-search-modal" aria-hidden="true">
+		<div id="es-search-modal" class="es-search-modal" aria-hidden="true" hidden>
 			<div class="es-container es-search-modal-inner">
 				<form role="search" method="get" class="es-search-form" action="<?php echo esc_url( home_url( '/' ) ); ?>">
 					<label for="es-header-search-input" class="screen-reader-text">
@@ -112,7 +119,7 @@ $cart_url      = function_exists( 'wc_get_cart_url' ) ? wc_get_cart_url() : home
 						<?php echo erfan_sanat_icon( 'search', 'es-icon-sm' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 						<span><?php esc_html_e( 'جستجو', 'erfan-sanat' ); ?></span>
 					</button>
-					<button type="button" class="es-icon-btn es-search-close" aria-label="<?php esc_attr_e( 'بستن جستجو', 'erfan-sanat' ); ?>">
+					<button type="button" class="es-icon-btn es-search-close" data-es-search-close="true" aria-label="<?php esc_attr_e( 'بستن جستجو', 'erfan-sanat' ); ?>">
 						<?php echo erfan_sanat_icon( 'close' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 					</button>
 				</form>

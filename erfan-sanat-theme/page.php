@@ -2,6 +2,9 @@
 /**
  * Standard Page & Storefront Cart/Checkout/Account State Template (`page.php`)
  *
+ * Automatically routes core slugs (`contact`, `about`, `projects`, `products`, `blog`, `cart`, `checkout`)
+ * to their rich layouts even when no custom page template is manually assigned.
+ *
  * @package ErfanSanat
  */
 
@@ -9,11 +12,36 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+$queried_id   = get_queried_object_id();
+$queried_slug = $queried_id ? (string) get_post_field( 'post_name', $queried_id ) : '';
+$decoded_slug = rawurldecode( $queried_slug );
+
+if ( in_array( $decoded_slug, array( 'contact', 'contact-us', 'تماس-با-ما' ), true ) ) {
+	get_template_part( 'templates/template-contact' );
+	return;
+}
+
+if ( in_array( $decoded_slug, array( 'projects', 'project', 'پروژه-ها' ), true ) ) {
+	get_template_part( 'templates/template-projects' );
+	return;
+}
+
+if ( in_array( $decoded_slug, array( 'products', 'shop', 'فروشگاه' ), true ) && ! class_exists( 'WooCommerce' ) ) {
+	get_template_part( 'templates/template-products' );
+	return;
+}
+
+if ( in_array( $decoded_slug, array( 'blog', 'وبلاگ' ), true ) ) {
+	get_template_part( 'templates/template-blog' );
+	return;
+}
+
 get_header();
 
 while ( have_posts() ) :
 	the_post();
-	$slug = get_post_field( 'post_name', get_the_ID() );
+	$slug         = (string) get_post_field( 'post_name', get_the_ID() );
+	$decoded_post = rawurldecode( $slug );
 	?>
 	<section class="es-page-hero">
 		<div class="es-container">
@@ -87,6 +115,12 @@ while ( have_posts() ) :
 			<?php endif; ?>
 		</div>
 	</section>
+
+	<?php if ( in_array( $decoded_post, array( 'about', 'about-us', 'درباره-ما' ), true ) ) : ?>
+		<?php get_template_part( 'template-parts/home/about-section' ); ?>
+		<?php get_template_part( 'template-parts/home/why-us-process' ); ?>
+		<?php get_template_part( 'template-parts/home/consultation-cta' ); ?>
+	<?php endif; ?>
 	<?php
 endwhile;
 

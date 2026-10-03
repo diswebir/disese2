@@ -183,8 +183,13 @@ function erfan_sanat_resolve_media_url( $meta_value ): string {
 
 /**
  * Fallback menu renderer when no custom WordPress menu is assigned to the primary location.
+ *
+ * @param string $menu_class Optional UL class ('es-nav-list' or 'es-mobile-nav-list').
  */
-function erfan_sanat_fallback_primary_menu(): void {
+function erfan_sanat_fallback_primary_menu( string $menu_class = 'es-nav-list' ): void {
+	if ( ! is_string( $menu_class ) || '' === $menu_class ) {
+		$menu_class = 'es-nav-list';
+	}
 	$shop_url = function_exists( 'wc_get_page_permalink' ) ? wc_get_page_permalink( 'shop' ) : home_url( '/shop/' );
 	if ( ! $shop_url || $shop_url === home_url( '/' ) ) {
 		$shop_url = home_url( '/shop/' );
@@ -192,7 +197,7 @@ function erfan_sanat_fallback_primary_menu(): void {
 	$projects_url = get_post_type_archive_link( 'project' ) ?: home_url( '/projects/' );
 	$blog_url     = home_url( '/blog/' );
 	?>
-	<ul class="es-nav-list">
+	<ul class="<?php echo esc_attr( $menu_class ); ?>">
 		<li class="menu-item <?php echo is_front_page() ? 'current-menu-item' : ''; ?>">
 			<a href="<?php echo esc_url( home_url( '/' ) ); ?>"><?php esc_html_e( 'صفحه اصلی', 'erfan-sanat' ); ?></a>
 		</li>

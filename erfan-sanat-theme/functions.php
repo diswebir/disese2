@@ -11,7 +11,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'ES_THEME_VERSION', '1.0.0' );
+define( 'ES_THEME_VERSION', '1.1.0' );
 define( 'ES_THEME_SLUG', 'erfan-sanat-theme' );
 define( 'ES_TEXT_DOMAIN', 'erfan-sanat' );
 define( 'ES_OPTION_KEY', 'erfan_sanat_options' );

@@ -12,6 +12,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+if ( is_search() ) {
+	get_template_part( 'search' );
+	return;
+}
+
 get_header();
 
 get_template_part( 'template-parts/home/hero' );
