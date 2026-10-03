@@ -1,0 +1,8 @@
+/*
+ * Erfan Sanat Enterprise Theme — Native RTL Support
+ */
+html,
+body {
+	direction: rtl;
+	text-align: right;
+}

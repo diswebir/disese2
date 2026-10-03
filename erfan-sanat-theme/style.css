@@ -1,0 +1,22 @@
+/*
+Theme Name: Erfan Sanat Enterprise WordPress Theme
+Theme URI: https://erfansanat.com/
+Author: Erfan Sanat Engineering Team
+Author URI: https://erfansanat.com/
+Description: پوسته سازمانی، فروشگاهی و مهندسی شرکت دانش‌بنیان عرفان صنعت اصفهان — طراحی‌شده به‌صورت بومی، راست‌به‌چپ (RTL)، بدون وابستگی خارجی و کاملاً سازگار با ووکامرس برای نمایش و فروش تجهیزات نورپردازی شهری، المان‌های نوری، پروژه‌های اجرایی و مقالات تخصصی.
+Version: 1.0.0
+Requires at least: 6.2
+Tested up to: 6.7
+Requires PHP: 8.0
+License: GPL v2 or later
+License URI: https://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: erfan-sanat
+Domain Path: /languages
+Tags: rtl-language-support, e-commerce, custom-logo, custom-menu, featured-images, theme-options, accessibility-ready
+*/
+
+/* Core stylesheet is loaded via inc/enqueue.php from assets/css/theme.css */
+html {
+	direction: rtl;
+	unicode-bidi: embed;
+}
