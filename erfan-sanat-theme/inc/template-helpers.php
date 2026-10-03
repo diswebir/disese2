@@ -1,6 +1,6 @@
 <?php
 /**
- * Reusable Template Helpers, SVG Icon System, Persian Numerals & Formatting
+ * Reusable Template Helpers, SVG Icon System, Persian Numerals, Dynamic URL Resolvers & Menu Fallbacks
  *
  * @package ErfanSanat
  */
@@ -49,25 +49,27 @@ function erfan_sanat_format_toman( $amount ): string {
 function erfan_sanat_icon( string $name, string $class = 'es-icon' ): string {
 	$cls   = esc_attr( trim( 'es-svg-icon ' . $class ) );
 	$icons = array(
-		'phone'       => '<svg class="' . $cls . '" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>',
-		'search'      => '<svg class="' . $cls . '" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>',
-		'cart'        => '<svg class="' . $cls . '" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>',
-		'menu'        => '<svg class="' . $cls . '" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>',
-		'close'       => '<svg class="' . $cls . '" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>',
-		'shield'      => '<svg class="' . $cls . '" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>',
-		'spark'       => '<svg class="' . $cls . '" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>',
-		'bulb'        => '<svg class="' . $cls . '" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6"/><path d="M10 22h4"/><path d="M15.09 14c.18-.98.65-1.74 1.41-2.5A4.65 4.65 0 0 0 18 8 6 6 0 0 0 6 8c0 1 .23 2.23 1.5 3.5A4.61 4.61 0 0 1 8.91 14"/></svg>',
-		'award'       => '<svg class="' . $cls . '" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg>',
-		'check'       => '<svg class="' . $cls . '" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>',
-		'arrow-left'  => '<svg class="' . $cls . '" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>',
-		'download'    => '<svg class="' . $cls . '" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>',
-		'location'    => '<svg class="' . $cls . '" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>',
-		'calendar'    => '<svg class="' . $cls . '" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>',
-		'clock'       => '<svg class="' . $cls . '" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>',
-		'mail'        => '<svg class="' . $cls . '" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>',
-		'wifi'        => '<svg class="' . $cls . '" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><line x1="12" y1="20" x2="12.01" y2="20"/></svg>',
-		'droplet'     => '<svg class="' . $cls . '" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg>',
-		'video'       => '<svg class="' . $cls . '" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>',
+		'phone'      => '<svg class="' . $cls . '" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>',
+		'search'     => '<svg class="' . $cls . '" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>',
+		'cart'       => '<svg class="' . $cls . '" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>',
+		'menu'       => '<svg class="' . $cls . '" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>',
+		'close'      => '<svg class="' . $cls . '" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>',
+		'shield'     => '<svg class="' . $cls . '" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>',
+		'spark'      => '<svg class="' . $cls . '" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>',
+		'bulb'       => '<svg class="' . $cls . '" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6"/><path d="M10 22h4"/><path d="M15.09 14c.18-.98.65-1.74 1.41-2.5A4.65 4.65 0 0 0 18 8 6 6 0 0 0 6 8c0 1 .23 2.23 1.5 3.5A4.61 4.61 0 0 1 8.91 14"/></svg>',
+		'award'      => '<svg class="' . $cls . '" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg>',
+		'check'      => '<svg class="' . $cls . '" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>',
+		'arrow-left' => '<svg class="' . $cls . '" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>',
+		'download'   => '<svg class="' . $cls . '" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>',
+		'location'   => '<svg class="' . $cls . '" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>',
+		'calendar'   => '<svg class="' . $cls . '" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>',
+		'clock'      => '<svg class="' . $cls . '" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>',
+		'mail'       => '<svg class="' . $cls . '" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>',
+		'wifi'       => '<svg class="' . $cls . '" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><line x1="12" y1="20" x2="12.01" y2="20"/></svg>',
+		'droplet'    => '<svg class="' . $cls . '" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg>',
+		'video'      => '<svg class="' . $cls . '" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>',
+		'layers'     => '<svg class="' . $cls . '" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>',
+		'cpu'        => '<svg class="' . $cls . '" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="2" ry="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="1" x2="9" y2="4"/><line x1="15" y1="1" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="23"/><line x1="15" y1="20" x2="15" y2="23"/><line x1="20" y1="9" x2="23" y2="9"/><line x1="20" y1="14" x2="23" y2="14"/><line x1="1" y1="9" x2="4" y2="9"/><line x1="1" y1="14" x2="4" y2="14"/></svg>',
 	);
 
 	return $icons[ $name ] ?? $icons['spark'];
@@ -116,6 +118,7 @@ function erfan_sanat_get_iran_provinces(): array {
 
 /**
  * Resolves a fallback local image URL for a post/product/project when no featured image is set.
+ * Always resolves theme-bundled `assets/images/` files against the active `ES_THEME_URI`.
  *
  * @param int    $post_id Post ID.
  * @param string $context Context ('product', 'project', 'post').
@@ -131,6 +134,9 @@ function erfan_sanat_get_post_image_url( int $post_id, string $context = 'produc
 
 	$custom_img = get_post_meta( $post_id, '_es_fallback_image', true );
 	if ( is_string( $custom_img ) && '' !== $custom_img ) {
+		if ( str_contains( $custom_img, 'assets/images/' ) || ! str_contains( $custom_img, '/' ) ) {
+			return esc_url( ES_THEME_URI . 'assets/images/' . basename( $custom_img ) );
+		}
 		return esc_url( $custom_img );
 	}
 
@@ -176,26 +182,103 @@ function erfan_sanat_resolve_media_url( $meta_value ): string {
 		return $url ? esc_url( $url ) : '';
 	}
 	if ( is_string( $meta_value ) ) {
+		if ( str_contains( $meta_value, 'assets/images/' ) ) {
+			return esc_url( ES_THEME_URI . 'assets/images/' . basename( $meta_value ) );
+		}
 		return esc_url( $meta_value );
 	}
 	return '';
 }
 
 /**
- * Fallback menu renderer when no custom WordPress menu is assigned to the primary location.
+ * Dynamically resolves a core page or archive URL so links work under any permalink setting.
  *
- * @param string $menu_class Optional UL class ('es-nav-list' or 'es-mobile-nav-list').
+ * @param string $slug Core route key ('shop', 'projects', 'blog', 'about', 'contact', 'cart', 'checkout').
+ * @return string Escaped URL.
  */
-function erfan_sanat_fallback_primary_menu( string $menu_class = 'es-nav-list' ): void {
-	if ( ! is_string( $menu_class ) || '' === $menu_class ) {
-		$menu_class = 'es-nav-list';
+function erfan_sanat_get_page_url( string $slug ): string {
+	if ( 'shop' === $slug || 'products' === $slug ) {
+		if ( function_exists( 'wc_get_page_permalink' ) ) {
+			$wc_shop = wc_get_page_permalink( 'shop' );
+			if ( $wc_shop && $wc_shop !== home_url( '/' ) ) {
+				return esc_url( $wc_shop );
+			}
+		}
+		$archive = get_post_type_archive_link( 'product' );
+		if ( $archive ) {
+			return esc_url( $archive );
+		}
 	}
-	$shop_url = function_exists( 'wc_get_page_permalink' ) ? wc_get_page_permalink( 'shop' ) : home_url( '/shop/' );
-	if ( ! $shop_url || $shop_url === home_url( '/' ) ) {
-		$shop_url = home_url( '/shop/' );
+
+	if ( 'projects' === $slug || 'project' === $slug ) {
+		$archive = get_post_type_archive_link( 'project' );
+		if ( $archive ) {
+			return esc_url( $archive );
+		}
 	}
-	$projects_url = get_post_type_archive_link( 'project' ) ?: home_url( '/projects/' );
-	$blog_url     = home_url( '/blog/' );
+
+	if ( 'cart' === $slug && function_exists( 'wc_get_cart_url' ) ) {
+		return esc_url( wc_get_cart_url() );
+	}
+
+	if ( 'checkout' === $slug && function_exists( 'wc_get_checkout_url' ) ) {
+		return esc_url( wc_get_checkout_url() );
+	}
+
+	$page = get_page_by_path( $slug, OBJECT, 'page' );
+	if ( $page instanceof WP_Post ) {
+		$link = get_permalink( $page->ID );
+		if ( $link ) {
+			return esc_url( $link );
+		}
+	}
+
+	return esc_url( home_url( '/' . trim( $slug, '/' ) . '/' ) );
+}
+
+/**
+ * Dynamically resolves a taxonomy term link by slug with safe fallback.
+ *
+ * @param string $slug     Term slug.
+ * @param string $taxonomy Taxonomy name.
+ * @param string $fallback Optional fallback URL.
+ * @return string Escaped URL.
+ */
+function erfan_sanat_get_term_url( string $slug, string $taxonomy, string $fallback = '' ): string {
+	if ( taxonomy_exists( $taxonomy ) ) {
+		$term = get_term_by( 'slug', $slug, $taxonomy );
+		if ( $term instanceof WP_Term ) {
+			$link = get_term_link( $term );
+			if ( ! is_wp_error( $link ) && is_string( $link ) ) {
+				return esc_url( $link );
+			}
+		}
+	}
+	if ( '' !== $fallback ) {
+		return esc_url( $fallback );
+	}
+	return erfan_sanat_get_page_url( 'product_cat' === $taxonomy ? 'shop' : 'projects' );
+}
+
+/**
+ * Fallback menu renderer when no custom WordPress menu is assigned to the primary/mobile location.
+ * Accepts either a string `$menu_class` or the `$args` array passed by `wp_nav_menu()`.
+ *
+ * @param string|array<string, mixed> $args Menu class string or `wp_nav_menu` arguments array.
+ */
+function erfan_sanat_fallback_primary_menu( $args = 'es-nav-list' ): void {
+	$menu_class = 'es-nav-list';
+	if ( is_array( $args ) && ! empty( $args['menu_class'] ) && is_string( $args['menu_class'] ) ) {
+		$menu_class = $args['menu_class'];
+	} elseif ( is_string( $args ) && '' !== trim( $args ) ) {
+		$menu_class = trim( $args );
+	}
+
+	$shop_url     = erfan_sanat_get_page_url( 'shop' );
+	$projects_url = erfan_sanat_get_page_url( 'projects' );
+	$blog_url     = erfan_sanat_get_page_url( 'blog' );
+	$about_url    = erfan_sanat_get_page_url( 'about' );
+	$contact_url  = erfan_sanat_get_page_url( 'contact' );
 	?>
 	<ul class="<?php echo esc_attr( $menu_class ); ?>">
 		<li class="menu-item <?php echo is_front_page() ? 'current-menu-item' : ''; ?>">
@@ -217,9 +300,13 @@ function erfan_sanat_fallback_primary_menu( string $menu_class = 'es-nav-list' )
 					?>
 					<ul class="sub-menu">
 						<?php foreach ( $top_cats as $cat ) : ?>
-							<?php if ( 'uncategorized' === $cat->slug ) { continue; } ?>
+							<?php
+							if ( 'uncategorized' === $cat->slug ) {
+								continue;
+							}
+							?>
 							<li>
-								<a href="<?php echo esc_url( get_term_link( $cat ) ); ?>">
+								<a href="<?php echo esc_url( (string) get_term_link( $cat ) ); ?>">
 									<?php echo esc_html( $cat->name ); ?>
 								</a>
 							</li>
@@ -237,11 +324,11 @@ function erfan_sanat_fallback_primary_menu( string $menu_class = 'es-nav-list' )
 		<li class="menu-item <?php echo ( is_home() || is_singular( 'post' ) || is_category() || is_tag() ) ? 'current-menu-item' : ''; ?>">
 			<a href="<?php echo esc_url( $blog_url ); ?>"><?php esc_html_e( 'مقالات فنی', 'erfan-sanat' ); ?></a>
 		</li>
-		<li class="menu-item">
-			<a href="<?php echo esc_url( home_url( '/#about' ) ); ?>"><?php esc_html_e( 'درباره ما', 'erfan-sanat' ); ?></a>
+		<li class="menu-item <?php echo is_page( 'about' ) ? 'current-menu-item' : ''; ?>">
+			<a href="<?php echo esc_url( $about_url ); ?>"><?php esc_html_e( 'درباره ما', 'erfan-sanat' ); ?></a>
 		</li>
-		<li class="menu-item">
-			<a href="<?php echo esc_url( home_url( '/#consultation' ) ); ?>"><?php esc_html_e( 'تماس با ما', 'erfan-sanat' ); ?></a>
+		<li class="menu-item <?php echo is_page( 'contact' ) ? 'current-menu-item' : ''; ?>">
+			<a href="<?php echo esc_url( $contact_url ); ?>"><?php esc_html_e( 'تماس با ما', 'erfan-sanat' ); ?></a>
 		</li>
 	</ul>
 	<?php

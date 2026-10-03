@@ -33,7 +33,7 @@ if ( ! $blog_query->have_posts() ) {
 					<?php esc_html_e( 'مقالات آموزشی کنترلرهای پیکسلی، استانداردهای درجه حفاظت IP67/IP68، محاسبه افت ولتاژ و اخبار شرکت دانش‌بنیان عرفان صنعت.', 'erfan-sanat' ); ?>
 				</p>
 			</div>
-			<a href="<?php echo esc_url( home_url( '/blog/' ) ); ?>" class="es-btn es-btn-outline">
+			<a href="<?php echo esc_url( erfan_sanat_get_page_url( 'blog' ) ); ?>" class="es-btn es-btn-outline">
 				<span><?php esc_html_e( 'مشاهده همه مقالات', 'erfan-sanat' ); ?></span>
 				<?php echo erfan_sanat_icon( 'arrow-left', 'es-icon-sm' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 			</a>

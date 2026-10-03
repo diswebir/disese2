@@ -1,11 +1,150 @@
-/*
- * Erfan Sanat Enterprise WordPress Theme — Native RTL Admin Stylesheet
+/**
+ * Erfan Sanat Enterprise WordPress Theme — Native RTL Admin & Persian Typography Stylesheet
+ *
+ * Applies local Vazirmatn (with Farsi digits) across the entire WordPress Admin Panel
+ * (`wp-admin`, admin bar, menus, tables, metaboxes, and the 17-tab Erfan Sanat Settings Engine)
+ * while preserving Dashicons icon fonts.
+ *
+ * @package ErfanSanat
  */
+
+/* ==========================================================================
+   1. Local Self-Hosted Vazirmatn WOFF2 Font Declarations (Weights 300–900)
+   ========================================================================== */
+@font-face {
+	font-family: 'Vazirmatn';
+	src: url('../fonts/Vazirmatn-Light.woff2') format('woff2');
+	font-weight: 300;
+	font-style: normal;
+	font-display: swap;
+}
+@font-face {
+	font-family: 'Vazirmatn';
+	src: url('../fonts/Vazirmatn-Regular.woff2') format('woff2');
+	font-weight: 400;
+	font-style: normal;
+	font-display: swap;
+}
+@font-face {
+	font-family: 'Vazirmatn';
+	src: url('../fonts/Vazirmatn-Medium.woff2') format('woff2');
+	font-weight: 500;
+	font-style: normal;
+	font-display: swap;
+}
+@font-face {
+	font-family: 'Vazirmatn';
+	src: url('../fonts/Vazirmatn-SemiBold.woff2') format('woff2');
+	font-weight: 600;
+	font-style: normal;
+	font-display: swap;
+}
+@font-face {
+	font-family: 'Vazirmatn';
+	src: url('../fonts/Vazirmatn-Bold.woff2') format('woff2');
+	font-weight: 700;
+	font-style: normal;
+	font-display: swap;
+}
+@font-face {
+	font-family: 'Vazirmatn';
+	src: url('../fonts/Vazirmatn-ExtraBold.woff2') format('woff2');
+	font-weight: 800;
+	font-style: normal;
+	font-display: swap;
+}
+@font-face {
+	font-family: 'Vazirmatn';
+	src: url('../fonts/Vazirmatn-Black.woff2') format('woff2');
+	font-weight: 900;
+	font-style: normal;
+	font-display: swap;
+}
+
+/* ==========================================================================
+   2. Global WordPress Admin Panel Persian Font Enforcement
+   ========================================================================== */
+body.wp-admin,
+#wpwrap,
+#wpcontent,
+#wpbody-content,
+#adminmenu,
+#adminmenu a,
+#adminmenu .wp-submenu a,
+#adminmenu .wp-menu-name,
+#wpadminbar,
+#wpadminbar .ab-item,
+#wpadminbar .ab-label,
+#wpadminbar a.ab-item,
+.wrap,
+.wrap h1,
+.wrap h2,
+.wrap h3,
+.wrap h4,
+body.wp-admin h1,
+body.wp-admin h2,
+body.wp-admin h3,
+body.wp-admin h4,
+body.wp-admin h5,
+body.wp-admin h6,
+body.wp-admin p,
+body.wp-admin label,
+body.wp-admin legend,
+body.wp-admin th,
+body.wp-admin td,
+body.wp-admin li,
+body.wp-admin input,
+body.wp-admin select,
+body.wp-admin textarea,
+body.wp-admin button,
+.wp-core-ui .button,
+.wp-core-ui .button-primary,
+.wp-core-ui .button-secondary,
+.wp-list-table,
+.widefat,
+.widefat th,
+.widefat td,
+.form-table,
+.form-table th,
+.form-table td,
+.postbox,
+.postbox .hndle,
+.metabox-holder,
+.notice,
+.es-admin-wrap,
+.es-admin-wrap h1,
+.es-admin-wrap h2,
+.es-admin-wrap h3,
+.es-admin-wrap h4,
+.es-admin-wrap p,
+.es-admin-wrap label,
+.es-admin-wrap input,
+.es-admin-wrap select,
+.es-admin-wrap textarea,
+.es-admin-wrap button {
+	font-family: 'Vazirmatn', Tahoma, sans-serif !important;
+}
+
+/* Strictly preserve Dashicons and Admin Bar icon fonts */
+.dashicons,
+.dashicons-before::before,
+#wpadminbar .ab-icon,
+#wpadminbar .ab-icon::before,
+#wpadminbar .ab-item::before,
+#adminmenu div.wp-menu-image::before,
+.media-modal-icon,
+.post-state-format::before {
+	font-family: dashicons !important;
+}
+
+/* ==========================================================================
+   3. Erfan Sanat Enterprise Theme Settings Dashboard (17-Tab Engine)
+   ========================================================================== */
 .es-admin-wrap {
-	max-width: 1280px;
-	margin: 20px 0 40px 20px;
-	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Tahoma, sans-serif;
+	max-width: 1320px;
+	margin: 22px 0 44px 20px;
 	direction: rtl;
+	color: #0f172a;
 }
 
 .es-admin-header {
@@ -13,13 +152,14 @@
 	align-items: center;
 	justify-content: space-between;
 	gap: 20px;
-	background: linear-gradient(135deg, #090d16 0%, #1e293b 100%);
+	background: linear-gradient(135deg, #090d16 0%, #111827 55%, #1e293b 100%);
 	color: #f8fafc;
-	padding: 24px 28px;
-	border-radius: 14px;
+	padding: 26px 30px;
+	border-radius: 16px;
 	margin-bottom: 24px;
-	border: 1px solid rgba(245, 158, 11, 0.35);
-	box-shadow: 0 12px 32px rgba(9, 13, 22, 0.18);
+	border: 1px solid rgba(245, 158, 11, 0.42);
+	box-shadow: 0 16px 38px rgba(9, 13, 22, 0.22);
+	flex-wrap: wrap;
 }
 
 .es-admin-brand {
@@ -32,27 +172,38 @@
 	display: inline-flex;
 	align-items: center;
 	justify-content: center;
-	width: 52px;
-	height: 52px;
-	border-radius: 12px;
+	width: 54px;
+	height: 54px;
+	border-radius: 14px;
 	background: linear-gradient(135deg, #fbbf24 0%, #d97706 100%);
 	color: #090d16;
-	font-weight: 800;
+	font-weight: 900;
 	font-size: 20px;
 	flex-shrink: 0;
+	box-shadow: 0 6px 18px rgba(245, 158, 11, 0.35);
 }
 
 .es-admin-brand h1 {
-	color: #f8fafc;
-	margin: 0 0 6px;
-	font-size: 21px;
-	font-weight: 700;
+	color: #f8fafc !important;
+	margin: 0 0 6px !important;
+	padding: 0 !important;
+	font-size: 21px !important;
+	font-weight: 800 !important;
+	line-height: 1.35 !important;
 }
 
 .es-admin-brand p {
-	color: #cbd5e1;
-	margin: 0;
-	font-size: 13px;
+	color: #cbd5e1 !important;
+	margin: 0 !important;
+	font-size: 13.5px !important;
+}
+
+.es-admin-brand code {
+	background: rgba(245, 158, 11, 0.18);
+	color: #fbbf24;
+	padding: 2px 8px;
+	border-radius: 6px;
+	font-weight: 700;
 }
 
 .es-admin-quick-links {
@@ -61,15 +212,31 @@
 	flex-wrap: wrap;
 }
 
+.es-admin-quick-links .button {
+	background: rgba(255, 255, 255, 0.08) !important;
+	border: 1px solid rgba(255, 255, 255, 0.18) !important;
+	color: #f8fafc !important;
+	border-radius: 10px !important;
+	padding: 6px 14px !important;
+	font-weight: 600 !important;
+	transition: all 0.2s ease;
+}
+
+.es-admin-quick-links .button:hover {
+	background: #f59e0b !important;
+	border-color: #fbbf24 !important;
+	color: #090d16 !important;
+}
+
 .es-admin-notice {
-	margin: 0 0 18px;
-	padding: 12px 16px;
-	border-radius: 10px;
+	margin: 0 0 18px !important;
+	padding: 12px 16px !important;
+	border-radius: 10px !important;
 }
 
 .es-admin-layout {
 	display: grid;
-	grid-template-columns: 250px 1fr;
+	grid-template-columns: 260px 1fr;
 	gap: 24px;
 	align-items: start;
 }
@@ -77,19 +244,21 @@
 .es-admin-tabs-nav {
 	background: #ffffff;
 	border: 1px solid #e2e8f0;
-	border-radius: 12px;
+	border-radius: 14px;
 	overflow: hidden;
-	box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
+	box-shadow: 0 4px 14px rgba(15, 23, 42, 0.05);
+	position: sticky;
+	top: 46px;
 }
 
 .es-admin-tabs-nav ul {
 	margin: 0;
-	padding: 8px;
+	padding: 10px;
 	list-style: none;
 }
 
 .es-admin-tabs-nav li {
-	margin: 0 0 2px;
+	margin: 0 0 3px;
 }
 
 .es-tab-link {
@@ -99,21 +268,22 @@
 	padding: 10px 14px;
 	text-decoration: none;
 	color: #334155;
-	border-radius: 8px;
-	font-weight: 500;
+	border-radius: 10px;
+	font-weight: 600;
 	font-size: 13.5px;
-	transition: all 0.15s ease;
+	transition: all 0.18s ease;
 }
 
 .es-tab-link:hover {
-	background: #f8fafc;
+	background: #f1f5f9;
 	color: #0f172a;
 }
 
 .es-tab-link.is-active {
-	background: #0f172a;
+	background: linear-gradient(135deg, #090d16 0%, #1e293b 100%);
 	color: #fbbf24;
-	font-weight: 600;
+	font-weight: 700;
+	box-shadow: 0 4px 12px rgba(15, 23, 42, 0.15);
 }
 
 .es-tab-link.is-active .dashicons {
@@ -124,9 +294,9 @@
 .es-settings-form {
 	background: #ffffff;
 	border: 1px solid #e2e8f0;
-	border-radius: 12px;
-	padding: 24px 28px;
-	box-shadow: 0 2px 10px rgba(15, 23, 42, 0.04);
+	border-radius: 14px;
+	padding: 28px 32px;
+	box-shadow: 0 4px 16px rgba(15, 23, 42, 0.05);
 }
 
 .es-settings-form {
@@ -139,20 +309,24 @@
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
-	border-bottom: 1px solid #e2e8f0;
-	padding-bottom: 16px;
+	border-bottom: 2px solid #f1f5f9;
+	padding-bottom: 18px;
 	margin-bottom: 20px;
+	gap: 16px;
+	flex-wrap: wrap;
 }
 
 .es-panel-section-head h2 {
-	margin: 0 0 6px;
-	font-size: 18px;
+	margin: 0 0 6px !important;
+	font-size: 19px !important;
+	font-weight: 800 !important;
 	color: #0f172a;
 }
 
 .es-panel-section-head p {
 	margin: 0;
 	color: #64748b;
+	font-size: 13.5px;
 }
 
 .es-panel-actions-top {
@@ -169,19 +343,19 @@
 .es-admin-field-row,
 .es-field-type- {
 	display: grid;
-	grid-template-columns: 280px 1fr;
+	grid-template-columns: 290px 1fr;
 	gap: 24px;
-	padding: 18px 0;
+	padding: 20px 0;
 	border-bottom: 1px solid #f1f5f9;
 	align-items: start;
 }
 
 .es-admin-field-label label {
-	font-weight: 600;
-	color: #1e293b;
+	font-weight: 700;
+	color: #0f172a;
 	font-size: 14px;
 	display: block;
-	margin-bottom: 4px;
+	margin-bottom: 5px;
 }
 
 .es-admin-field-control {
@@ -194,7 +368,7 @@
 	margin: 4px 0 0;
 	font-size: 12.5px;
 	color: #64748b;
-	line-height: 1.5;
+	line-height: 1.65;
 }
 
 .es-input,
@@ -205,15 +379,33 @@
 .es-media-url-input,
 .es-gallery-input {
 	width: 100%;
-	max-width: 520px;
-	padding: 8px 12px;
-	border: 1px solid #cbd5e1;
-	border-radius: 8px;
-	font-size: 13.5px;
+	max-width: 540px;
+	padding: 9px 14px !important;
+	border: 1px solid #cbd5e1 !important;
+	border-radius: 9px !important;
+	font-size: 13.5px !important;
+	color: #0f172a !important;
+	background-color: #f8fafc !important;
+	transition: border-color 0.15s ease, box-shadow 0.15s ease, background-color 0.15s ease;
+}
+
+.es-input:focus,
+.es-input-number:focus,
+.es-textarea:focus,
+.es-select:focus,
+.es-media-url-input:focus,
+.es-gallery-input:focus {
+	border-color: #f59e0b !important;
+	background-color: #ffffff !important;
+	box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.18) !important;
+	outline: none !important;
 }
 
 .es-select-wrap {
-	max-width: 520px;
+	display: flex;
+	align-items: center;
+	gap: 12px;
+	max-width: 540px;
 }
 
 .es-color-picker-group {
@@ -223,46 +415,49 @@
 }
 
 .es-color-swatch {
-	width: 44px;
-	height: 38px;
+	width: 46px;
+	height: 40px;
 	padding: 2px;
 	border: 1px solid #cbd5e1;
 	border-radius: 8px;
 	cursor: pointer;
+	background: #fff;
 }
 
 .es-color-hex-input {
-	max-width: 130px;
-	font-family: monospace;
+	max-width: 140px;
+	font-weight: 700;
 }
 
 .es-color-live-preview {
-	width: 28px;
-	height: 28px;
+	width: 30px;
+	height: 30px;
 	border-radius: 50%;
-	border: 2px solid #e2e8f0;
+	border: 2px solid #cbd5e1;
 	display: inline-block;
+	box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
 }
 
 .es-range-wrapper {
 	display: flex;
 	align-items: center;
 	gap: 14px;
-	max-width: 420px;
+	max-width: 440px;
 }
 
 .es-range-input {
 	flex: 1;
+	accent-color: #f59e0b;
 }
 
 .es-range-badge {
 	background: #0f172a;
 	color: #fbbf24;
-	padding: 4px 10px;
-	border-radius: 6px;
-	font-weight: 600;
-	font-size: 12.5px;
-	min-width: 54px;
+	padding: 5px 12px;
+	border-radius: 8px;
+	font-weight: 700;
+	font-size: 13px;
+	min-width: 60px;
 	text-align: center;
 }
 
@@ -272,12 +467,25 @@
 	align-items: center;
 	gap: 10px;
 	cursor: pointer;
+	padding: 6px 12px;
+	background: #f8fafc;
+	border: 1px solid #e2e8f0;
+	border-radius: 10px;
+	width: fit-content;
+}
+
+.es-switch input[type="checkbox"] {
+	accent-color: #f59e0b;
+	width: 18px;
+	height: 18px;
+	margin: 0;
 }
 
 .es-switch-slider,
 .es-switch-status {
 	font-size: 13px;
-	color: #334155;
+	font-weight: 700;
+	color: #1e293b;
 }
 
 .es-multiselect-group {
@@ -289,41 +497,46 @@
 .es-checkbox-pill {
 	display: inline-flex;
 	align-items: center;
-	gap: 6px;
-	padding: 6px 12px;
+	gap: 8px;
+	padding: 7px 14px;
 	background: #f8fafc;
 	border: 1px solid #cbd5e1;
-	border-radius: 8px;
+	border-radius: 9px;
 	cursor: pointer;
+	font-weight: 600;
 }
 
 .es-media-field-wrapper,
 .es-gallery-field-wrapper {
 	display: flex;
 	flex-direction: column;
-	gap: 8px;
+	gap: 10px;
 }
 
 .es-media-input-row {
 	display: flex;
 	gap: 10px;
 	align-items: center;
-	max-width: 560px;
+	max-width: 580px;
 }
 
 .es-media-upload-btn,
 .es-gallery-upload-btn {
 	cursor: pointer;
+	flex-shrink: 0;
 }
 
 .es-media-preview,
 .es-icon-preview-box {
-	margin-top: 10px;
-	background: #0f172a;
-	padding: 10px;
-	border-radius: 8px;
-	display: inline-block;
-	max-width: 220px;
+	margin-top: 8px;
+	background: #090d16;
+	padding: 12px;
+	border-radius: 10px;
+	border: 1px solid rgba(245, 158, 11, 0.35);
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 240px;
 	color: #fbbf24;
 }
 
@@ -331,13 +544,14 @@
 	max-width: 100%;
 	height: auto;
 	display: block;
+	border-radius: 6px;
 }
 
 .es-repeater-container,
 .es-faq-repeater-wrap {
 	display: flex;
 	flex-direction: column;
-	gap: 10px;
+	gap: 12px;
 }
 
 .es-repeater-rows {
@@ -356,43 +570,48 @@
 	gap: 12px;
 	align-items: flex-end;
 	background: #f8fafc;
-	padding: 12px;
+	padding: 14px;
 	border: 1px solid #e2e8f0;
-	border-radius: 8px;
-	margin-bottom: 10px;
+	border-radius: 10px;
+	margin-bottom: 6px;
 	flex-wrap: wrap;
 }
 
 .es-repeater-col {
 	flex: 1;
-	min-width: 160px;
+	min-width: 170px;
 }
 
 .es-repeater-col label {
 	display: block;
-	font-size: 12px;
+	font-size: 12.5px;
+	font-weight: 600;
 	color: #475569;
-	margin-bottom: 4px;
+	margin-bottom: 5px;
 }
 
 .es-repeater-add-row,
 .es-repeater-remove-row {
 	cursor: pointer;
+	width: fit-content;
 }
 
 .es-panel-footer {
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
-	padding-top: 20px;
-	margin-top: 20px;
-	border-top: 1px solid #e2e8f0;
+	padding-top: 22px;
+	margin-top: 22px;
+	border-top: 2px solid #f1f5f9;
+	gap: 16px;
+	flex-wrap: wrap;
 }
 
 .es-panel-footer-primary,
 .es-panel-footer-danger {
 	display: flex;
 	gap: 12px;
+	align-items: center;
 }
 
 .es-reset-tab-btn,
@@ -402,28 +621,46 @@
 
 .es-admin-cards-two-col {
 	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+	grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
 	gap: 24px;
-	margin-top: 20px;
+	margin-top: 22px;
 }
 
 .es-admin-card {
 	background: #ffffff;
 	border: 1px solid #e2e8f0;
-	border-radius: 12px;
-	padding: 24px;
+	border-radius: 14px;
+	padding: 26px;
+	box-shadow: 0 4px 14px rgba(15, 23, 42, 0.04);
+}
+
+.es-admin-card h2 {
+	margin-top: 0 !important;
+	font-size: 17.5px !important;
+	font-weight: 800 !important;
+	color: #0f172a;
 }
 
 .es-admin-metabox-grid {
 	display: grid;
 	grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-	gap: 16px;
-	padding: 10px 0;
+	gap: 18px;
+	padding: 12px 0;
+	direction: rtl;
+}
+
+.es-meta-field {
+	background: #f8fafc;
+	border: 1px solid #e2e8f0;
+	border-radius: 10px;
+	padding: 14px;
 }
 
 .es-meta-field label {
 	display: block;
-	margin-bottom: 6px;
+	margin-bottom: 8px;
+	font-weight: 700;
+	color: #0f172a;
 }
 
 .es-meta-full {
@@ -434,8 +671,14 @@
 	.es-admin-layout {
 		grid-template-columns: 1fr;
 	}
+	.es-admin-tabs-nav {
+		position: static;
+	}
 	.es-admin-field-row {
 		grid-template-columns: 1fr;
-		gap: 8px;
+		gap: 10px;
+	}
+	.es-admin-cards-two-col {
+		grid-template-columns: 1fr;
 	}
 }

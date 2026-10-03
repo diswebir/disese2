@@ -2,8 +2,8 @@
 /**
  * Asset Enqueue Management
  *
- * Strictly loads local assets only. Separates frontend and admin assets,
- * avoids jQuery on frontend, and uses defer strategy.
+ * Strictly loads local assets only. Applies local Persian Vazirmatn font
+ * across both Frontend and the entire WordPress Admin Panel.
  *
  * @package ErfanSanat
  */
@@ -62,11 +62,11 @@ function erfan_sanat_enqueue_frontend_assets(): void {
 			'isRtl'         => is_rtl(),
 			'persianDigits' => (bool) es_opt( 'enable_persian_digits', true ),
 			'i18n'          => array(
-				'copied'       => __( 'کد در حافظه کپی شد', 'erfan-sanat' ),
-				'sending'      => __( 'در حال ارسال درخواست...', 'erfan-sanat' ),
-				'sentSuccess'  => __( 'درخواست شما با موفقیت ثبت شد. کارشناسان فروش به‌زودی با شما تماس می‌گیرند.', 'erfan-sanat' ),
-				'sentError'    => __( 'خطایی در ثبت درخواست رخ داد. لطفاً مجدداً تلاش کنید.', 'erfan-sanat' ),
-				'close'        => __( 'بستن', 'erfan-sanat' ),
+				'copied'      => __( 'کد در حافظه کپی شد', 'erfan-sanat' ),
+				'sending'     => __( 'در حال ارسال درخواست...', 'erfan-sanat' ),
+				'sentSuccess' => __( 'درخواست شما با موفقیت ثبت شد. کارشناسان فروش به‌زودی با شما تماس می‌گیرند.', 'erfan-sanat' ),
+				'sentError'   => __( 'خطایی در ثبت درخواست رخ داد. لطفاً مجدداً تلاش کنید.', 'erfan-sanat' ),
+				'close'       => __( 'بستن', 'erfan-sanat' ),
 			),
 		)
 	);
@@ -74,28 +74,40 @@ function erfan_sanat_enqueue_frontend_assets(): void {
 add_action( 'wp_enqueue_scripts', 'erfan_sanat_enqueue_frontend_assets' );
 
 /**
- * Preloads local Vazirmatn WOFF2 primary font files on frontend.
+ * Preloads local Vazirmatn WOFF2 primary font files on frontend and admin.
  */
 function erfan_sanat_preload_local_fonts(): void {
-	if ( is_admin() ) {
-		return;
-	}
 	$regular_font = esc_url( ES_THEME_URI . 'assets/fonts/Vazirmatn-Regular.woff2' );
 	$bold_font    = esc_url( ES_THEME_URI . 'assets/fonts/Vazirmatn-Bold.woff2' );
 	echo '<link rel="preload" href="' . $regular_font . '" as="font" type="font/woff2" crossorigin="anonymous">' . "\n";
 	echo '<link rel="preload" href="' . $bold_font . '" as="font" type="font/woff2" crossorigin="anonymous">' . "\n";
 }
 add_action( 'wp_head', 'erfan_sanat_preload_local_fonts', 2 );
+add_action( 'admin_head', 'erfan_sanat_preload_local_fonts', 2 );
 
 /**
- * Enqueues admin styles and scripts ONLY on Erfan Sanat admin screens and CPT edit screens.
+ * Enqueues admin styles across the entire WordPress Admin Panel (so Persian Vazirmatn
+ * typography applies everywhere in wp-admin) and loads admin JS/media on theme & CPT screens.
  *
  * @param string $hook_suffix Current admin page hook.
  */
-function erfan_sanat_enqueue_admin_assets( string $hook_suffix ): void {
+function erfan_sanat_enqueue_admin_assets( $hook_suffix = '' ): void {
+	$hook_suffix = (string) $hook_suffix;
+	$admin_css_ver = file_exists( ES_THEME_DIR . 'assets/css/admin.css' )
+		? ES_THEME_VERSION . '.' . (string) filemtime( ES_THEME_DIR . 'assets/css/admin.css' )
+		: ES_THEME_VERSION;
+
+	// Always load admin.css across wp-admin so Persian Vazirmatn typography and RTL polish apply everywhere.
+	wp_enqueue_style(
+		'erfan-sanat-admin',
+		ES_THEME_URI . 'assets/css/admin.css',
+		array(),
+		$admin_css_ver
+	);
+
 	$screen       = function_exists( 'get_current_screen' ) ? get_current_screen() : null;
 	$is_theme_opt = str_contains( $hook_suffix, 'erfan-sanat' );
-	$is_cpt_edit  = $screen && in_array( $screen->post_type, array( 'product', 'project', 'post' ), true );
+	$is_cpt_edit  = $screen && in_array( $screen->post_type, array( 'product', 'project', 'post', 'page' ), true );
 
 	if ( ! $is_theme_opt && ! $is_cpt_edit ) {
 		return;
@@ -103,18 +115,15 @@ function erfan_sanat_enqueue_admin_assets( string $hook_suffix ): void {
 
 	wp_enqueue_media();
 
-	wp_enqueue_style(
-		'erfan-sanat-admin',
-		ES_THEME_URI . 'assets/css/admin.css',
-		array(),
-		ES_THEME_VERSION
-	);
+	$admin_js_ver = file_exists( ES_THEME_DIR . 'assets/js/admin.js' )
+		? ES_THEME_VERSION . '.' . (string) filemtime( ES_THEME_DIR . 'assets/js/admin.js' )
+		: ES_THEME_VERSION;
 
 	wp_enqueue_script(
 		'erfan-sanat-admin',
 		ES_THEME_URI . 'assets/js/admin.js',
 		array(),
-		ES_THEME_VERSION,
+		$admin_js_ver,
 		true
 	);
 
@@ -122,12 +131,12 @@ function erfan_sanat_enqueue_admin_assets( string $hook_suffix ): void {
 		'erfan-sanat-admin',
 		'erfanSanatAdmin',
 		array(
-			'ajaxUrl'        => esc_url( admin_url( 'admin-ajax.php' ) ),
-			'nonce'          => wp_create_nonce( 'erfan_sanat_admin_nonce' ),
-			'confirmReset'   => __( 'آیا از بازنشانی تنظیمات به مقادیر پیش‌فرض اطمینان دارید؟', 'erfan-sanat' ),
-			'mediaTitle'     => __( 'انتخاب فایل یا تصویر از رسانه', 'erfan-sanat' ),
-			'mediaButton'    => __( 'انتخاب و ثبت', 'erfan-sanat' ),
-			'removeRowText'  => __( 'حذف ردیف', 'erfan-sanat' ),
+			'ajaxUrl'       => esc_url( admin_url( 'admin-ajax.php' ) ),
+			'nonce'         => wp_create_nonce( 'erfan_sanat_admin_nonce' ),
+			'confirmReset'  => __( 'آیا از بازنشانی تنظیمات به مقادیر پیش‌فرض اطمینان دارید؟', 'erfan-sanat' ),
+			'mediaTitle'    => __( 'انتخاب فایل یا تصویر از رسانه', 'erfan-sanat' ),
+			'mediaButton'   => __( 'انتخاب و ثبت', 'erfan-sanat' ),
+			'removeRowText' => __( 'حذف ردیف', 'erfan-sanat' ),
 		)
 	);
 }

@@ -96,11 +96,11 @@ $about_html    = (string) es_opt( 'footer_about_editor', '' );
 			<h3 class="es-footer-heading"><?php esc_html_e( 'دسترسی سریع', 'erfan-sanat' ); ?></h3>
 			<ul class="es-footer-links">
 				<li><a href="<?php echo esc_url( home_url( '/' ) ); ?>"><?php esc_html_e( 'صفحه اصلی', 'erfan-sanat' ); ?></a></li>
-				<li><a href="<?php echo esc_url( home_url( '/shop/' ) ); ?>"><?php esc_html_e( 'فروشگاه تجهیزات نورپردازی', 'erfan-sanat' ); ?></a></li>
-				<li><a href="<?php echo esc_url( home_url( '/projects/' ) ); ?>"><?php esc_html_e( 'پروژه‌های نورپردازی شهری', 'erfan-sanat' ); ?></a></li>
-				<li><a href="<?php echo esc_url( home_url( '/blog/' ) ); ?>"><?php esc_html_e( 'مقالات فنی و آموزش کنترلرها', 'erfan-sanat' ); ?></a></li>
-				<li><a href="<?php echo esc_url( home_url( '/about/' ) ); ?>"><?php esc_html_e( 'درباره شرکت دانش‌بنیان', 'erfan-sanat' ); ?></a></li>
-				<li><a href="<?php echo esc_url( home_url( '/contact/' ) ); ?>"><?php esc_html_e( 'تماس با ما و استعلام قیمت', 'erfan-sanat' ); ?></a></li>
+				<li><a href="<?php echo esc_url( erfan_sanat_get_page_url( 'shop' ) ); ?>"><?php esc_html_e( 'فروشگاه تجهیزات نورپردازی', 'erfan-sanat' ); ?></a></li>
+				<li><a href="<?php echo esc_url( erfan_sanat_get_page_url( 'projects' ) ); ?>"><?php esc_html_e( 'پروژه‌های نورپردازی شهری', 'erfan-sanat' ); ?></a></li>
+				<li><a href="<?php echo esc_url( erfan_sanat_get_page_url( 'blog' ) ); ?>"><?php esc_html_e( 'مقالات فنی و آموزش کنترلرها', 'erfan-sanat' ); ?></a></li>
+				<li><a href="<?php echo esc_url( erfan_sanat_get_page_url( 'about' ) ); ?>"><?php esc_html_e( 'درباره شرکت دانش‌بنیان', 'erfan-sanat' ); ?></a></li>
+				<li><a href="<?php echo esc_url( erfan_sanat_get_page_url( 'contact' ) ); ?>"><?php esc_html_e( 'تماس با ما و استعلام قیمت', 'erfan-sanat' ); ?></a></li>
 			</ul>
 		</div>
 

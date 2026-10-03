@@ -12,7 +12,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-$projects_archive_url = get_post_type_archive_link( 'project' ) ?: home_url( '/projects/' );
+$projects_archive_url = erfan_sanat_get_page_url( 'projects' );
 
 $featured_pillars = array(
 	array(
@@ -21,7 +21,7 @@ $featured_pillars = array(
 		'subtitle' => 'کمانی، نیم‌آرک، ۹۰ درجه، مربعی و قلبی',
 		'desc'     => 'مسیرهای عبوری با جلوه‌ای جادویی؛ از ورودی بوستان‌ها تا جشنواره‌های شهری',
 		'image'    => ES_THEME_URI . 'assets/images/light-tunnel.jpg',
-		'url'      => home_url( '/project-category/light-tunnels-walkways/' ),
+		'url'      => erfan_sanat_get_term_url( 'light-tunnels-walkways', 'project_cat', $projects_archive_url ),
 	),
 	array(
 		'num'      => '۰۲',
@@ -29,7 +29,7 @@ $featured_pillars = array(
 		'subtitle' => 'المان حجمی نورافکن',
 		'desc'     => 'کره‌های درخشان نقطه‌کانونی میادین و فضاهای باز شهری',
 		'image'    => ES_THEME_URI . 'assets/images/light-sphere.jpg',
-		'url'      => home_url( '/project-category/urban-beautification/' ),
+		'url'      => erfan_sanat_get_term_url( 'urban-beautification', 'project_cat', $projects_archive_url ),
 	),
 	array(
 		'num'      => '۰۳',

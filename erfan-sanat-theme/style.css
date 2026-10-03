@@ -4,7 +4,7 @@ Theme URI: https://erfansanat.com/
 Author: Erfan Sanat Engineering Team
 Author URI: https://erfansanat.com/
 Description: پوسته سازمانی، فروشگاهی و مهندسی شرکت دانش‌بنیان عرفان صنعت اصفهان — طراحی‌شده به‌صورت بومی، راست‌به‌چپ (RTL)، بدون وابستگی خارجی و کاملاً سازگار با ووکامرس برای نمایش و فروش تجهیزات نورپردازی شهری، المان‌های نوری، پروژه‌های اجرایی و مقالات تخصصی.
-Version: 1.1.0
+Version: 1.2.0
 Requires at least: 6.2
 Tested up to: 6.7
 Requires PHP: 8.0
@@ -15,8 +15,28 @@ Domain Path: /languages
 Tags: rtl-language-support, e-commerce, custom-logo, custom-menu, featured-images, theme-options, accessibility-ready
 */
 
-/* Core stylesheet is loaded via inc/enqueue.php from assets/css/theme.css */
-html {
+@font-face {
+	font-family: 'Vazirmatn';
+	src: url('assets/fonts/Vazirmatn-Regular.woff2') format('woff2');
+	font-weight: 400;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'Vazirmatn';
+	src: url('assets/fonts/Vazirmatn-Bold.woff2') format('woff2');
+	font-weight: 700;
+	font-style: normal;
+	font-display: swap;
+}
+
+html,
+body,
+button,
+input,
+select,
+textarea {
 	direction: rtl;
-	unicode-bidi: embed;
+	font-family: var(--es-font-body, 'Vazirmatn', Tahoma, sans-serif);
 }

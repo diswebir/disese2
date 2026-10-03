@@ -16,7 +16,7 @@ if ( function_exists( 'wc_print_notices' ) ) {
 do_action( 'woocommerce_before_checkout_form', $checkout ?? null );
 ?>
 <div class="es-wc-state-card">
-	<?php if ( isset( $checkout ) && is_object( $checkout ) && function_exists( ' wc_get_checkout_url' ) ) : ?>
+	<?php if ( isset( $checkout ) && is_object( $checkout ) && function_exists( 'wc_get_checkout_url' ) ) : ?>
 		<form name="checkout" method="post" class="checkout woocommerce-checkout" action="<?php echo esc_url( wc_get_checkout_url() ); ?>" enctype="multipart/form-data">
 			<?php if ( $checkout->get_checkout_fields() ) : ?>
 				<?php do_action( 'woocommerce_checkout_before_customer_details' ); ?>

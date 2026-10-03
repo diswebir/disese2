@@ -16,6 +16,11 @@ $queried_id   = get_queried_object_id();
 $queried_slug = $queried_id ? (string) get_post_field( 'post_name', $queried_id ) : '';
 $decoded_slug = rawurldecode( $queried_slug );
 
+if ( in_array( $decoded_slug, array( 'about', 'about-us', 'درباره-ما' ), true ) ) {
+	get_template_part( 'templates/template-about' );
+	return;
+}
+
 if ( in_array( $decoded_slug, array( 'contact', 'contact-us', 'تماس-با-ما' ), true ) ) {
 	get_template_part( 'templates/template-contact' );
 	return;

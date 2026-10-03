@@ -3,10 +3,10 @@
  *
  * Zero jQuery or external framework dependencies.
  * Handles:
- * 1. Mobile off-canvas navigation drawer + Escape key accessibility
+ * 1. Mobile off-canvas navigation drawer + Escape key + anchor link auto-close
  * 2. Header search modal/drawer toggle + close button
- * 3. Homepage Interactive 5-Service Showcase (`[data-es-services="true"]` & `[data-es-service-tabs]`)
- * 4. Single Product Technical Specs & Identity Tabs (`[data-es-specs-tabs]`)
+ * 3. Homepage Interactive 5-Service Showcase (`[data-es-services="true"]`)
+ * 4. Multi-instance Technical Specs & Corporate Identity Tabs (`[data-es-specs-tabs]`)
  * 5. Single Product Quantity Stepper (`[data-qty-step]`)
  * 6. Single Product Gallery Thumbnail Switcher
  *
@@ -35,6 +35,7 @@
 		}
 
 		var closeTriggers = drawer.querySelectorAll('.es-mobile-drawer-close, [data-close-drawer="true"], [data-es-mobile-close]');
+		var navLinks = drawer.querySelectorAll('.es-mobile-nav a');
 
 		function openDrawer() {
 			drawer.removeAttribute('hidden');
@@ -48,7 +49,6 @@
 			drawer.setAttribute('aria-hidden', 'true');
 			openBtn.setAttribute('aria-expanded', 'false');
 			document.body.style.overflow = '';
-			openBtn.focus();
 		}
 
 		openBtn.addEventListener('click', function () {
@@ -64,9 +64,16 @@
 			el.addEventListener('click', closeDrawer);
 		});
 
+		navLinks.forEach(function (link) {
+			link.addEventListener('click', function () {
+				closeDrawer();
+			});
+		});
+
 		document.addEventListener('keydown', function (e) {
 			if (e.key === 'Escape' && !drawer.hasAttribute('hidden')) {
 				closeDrawer();
+				openBtn.focus();
 			}
 		});
 	}
@@ -123,75 +130,71 @@
 	 * 3. Homepage Interactive 5-Item Services Showcase (`template-parts/home/services-interactive.php`)
 	 */
 	function initInteractiveServices() {
-		var container = document.querySelector('[data-es-services="true"], [data-es-service-tabs]');
-		if (!container) {
-			return;
-		}
+		var containers = document.querySelectorAll('[data-es-services="true"], [data-es-service-tabs]');
+		containers.forEach(function (container) {
+			var tabs = container.querySelectorAll('.es-service-tab-btn');
+			var panels = container.querySelectorAll('.es-service-preview-panel, [data-service-panel]');
+			var counterBadge = document.getElementById('es-service-counter');
 
-		var tabs = container.querySelectorAll('.es-service-tab-btn');
-		var panels = container.querySelectorAll('.es-service-preview-panel, [data-service-panel]');
-		var counterBadge = document.getElementById('es-service-counter');
+			tabs.forEach(function (tab, idx) {
+				tab.addEventListener('click', function () {
+					var targetIdx = tab.getAttribute('data-service-index') || tab.getAttribute('data-service-tab') || String(idx);
+					var numText = tab.getAttribute('data-service-num');
 
-		tabs.forEach(function (tab, idx) {
-			tab.addEventListener('click', function () {
-				var targetIdx = tab.getAttribute('data-service-index') || tab.getAttribute('data-service-tab') || String(idx);
-				var numText = tab.getAttribute('data-service-num');
+					tabs.forEach(function (t, tIdx) {
+						var tKey = t.getAttribute('data-service-index') || t.getAttribute('data-service-tab') || String(tIdx);
+						var active = tKey === targetIdx;
+						t.classList.toggle('is-active', active);
+						t.setAttribute('aria-selected', active ? 'true' : 'false');
+					});
 
-				tabs.forEach(function (t, tIdx) {
-					var tKey = t.getAttribute('data-service-index') || t.getAttribute('data-service-tab') || String(tIdx);
-					var active = tKey === targetIdx;
-					t.classList.toggle('is-active', active);
-					t.setAttribute('aria-selected', active ? 'true' : 'false');
-				});
+					panels.forEach(function (p, pIdx) {
+						var pKey = p.getAttribute('data-service-panel') || String(pIdx);
+						var match = pKey === targetIdx || p.id === 'es-srv-panel-' + targetIdx;
+						p.classList.toggle('is-active', match);
+						if (match) {
+							p.removeAttribute('hidden');
+						} else {
+							p.setAttribute('hidden', '');
+						}
+					});
 
-				panels.forEach(function (p, pIdx) {
-					var pKey = p.getAttribute('data-service-panel') || String(pIdx);
-					var match = pKey === targetIdx || p.id === 'es-srv-panel-' + targetIdx;
-					p.classList.toggle('is-active', match);
-					if (match) {
-						p.removeAttribute('hidden');
-					} else {
-						p.setAttribute('hidden', '');
+					if (counterBadge && numText) {
+						counterBadge.textContent = numText;
 					}
 				});
-
-				if (counterBadge && numText) {
-					counterBadge.textContent = numText;
-				}
 			});
 		});
 	}
 
 	/**
-	 * 4. Single Product Technical Specs & Identity Tabs (`[data-es-specs-tabs]`)
+	 * 4. Multi-Instance Technical Specs & Identity Tabs (`[data-es-specs-tabs]`)
 	 */
 	function initProductSpecsTabs() {
-		var wrapper = document.querySelector('[data-es-specs-tabs]');
-		if (!wrapper) {
-			return;
-		}
+		var wrappers = document.querySelectorAll('[data-es-specs-tabs]');
+		wrappers.forEach(function (wrapper) {
+			var buttons = wrapper.querySelectorAll('[data-spec-tab]');
+			var panels = wrapper.querySelectorAll('[data-spec-panel]');
 
-		var buttons = wrapper.querySelectorAll('[data-spec-tab]');
-		var panels = wrapper.querySelectorAll('[data-spec-panel]');
+			buttons.forEach(function (btn) {
+				btn.addEventListener('click', function () {
+					var targetKey = btn.getAttribute('data-spec-tab');
 
-		buttons.forEach(function (btn) {
-			btn.addEventListener('click', function () {
-				var targetKey = btn.getAttribute('data-spec-tab');
+					buttons.forEach(function (b) {
+						var active = b.getAttribute('data-spec-tab') === targetKey;
+						b.classList.toggle('is-active', active);
+						b.setAttribute('aria-selected', active ? 'true' : 'false');
+					});
 
-				buttons.forEach(function (b) {
-					var active = b.getAttribute('data-spec-tab') === targetKey;
-					b.classList.toggle('is-active', active);
-					b.setAttribute('aria-selected', active ? 'true' : 'false');
-				});
-
-				panels.forEach(function (panel) {
-					var match = panel.getAttribute('data-spec-panel') === targetKey;
-					panel.classList.toggle('is-active', match);
-					if (match) {
-						panel.removeAttribute('hidden');
-					} else {
-						panel.setAttribute('hidden', '');
-					}
+					panels.forEach(function (panel) {
+						var match = panel.getAttribute('data-spec-panel') === targetKey;
+						panel.classList.toggle('is-active', match);
+						if (match) {
+							panel.removeAttribute('hidden');
+						} else {
+							panel.setAttribute('hidden', '');
+						}
+					});
 				});
 			});
 		});

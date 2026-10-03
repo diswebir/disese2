@@ -41,7 +41,7 @@ $about_title = (string) es_opt( 'home_about_title', 'بیش از ۲۵ سال ت�
 				</ul>
 
 				<div class="es-about-actions">
-					<a href="<?php echo esc_url( home_url( '/about/' ) ); ?>" class="es-btn es-btn-primary">
+					<a href="<?php echo esc_url( erfan_sanat_get_page_url( 'about' ) ); ?>" class="es-btn es-btn-primary">
 						<span><?php esc_html_e( 'کسب اطلاعات بیشتر', 'erfan-sanat' ); ?></span>
 						<?php echo erfan_sanat_icon( 'arrow-left', 'es-icon-sm' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 					</a>

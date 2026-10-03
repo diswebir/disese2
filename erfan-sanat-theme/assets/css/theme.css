@@ -9,8 +9,15 @@
  */
 
 /* ==========================================================================
-   1. Local Self-Hosted Font Declarations (Vazirmatn WOFF2)
+   1. Local Self-Hosted Font Declarations (Vazirmatn WOFF2 with Farsi Digits)
    ========================================================================== */
+@font-face {
+	font-family: 'Vazirmatn';
+	src: url('../fonts/Vazirmatn-Light.woff2') format('woff2');
+	font-weight: 300;
+	font-style: normal;
+	font-display: swap;
+}
 @font-face {
 	font-family: 'Vazirmatn';
 	src: url('../fonts/Vazirmatn-Regular.woff2') format('woff2');
@@ -43,6 +50,13 @@
 	font-family: 'Vazirmatn';
 	src: url('../fonts/Vazirmatn-ExtraBold.woff2') format('woff2');
 	font-weight: 800;
+	font-style: normal;
+	font-display: swap;
+}
+@font-face {
+	font-family: 'Vazirmatn';
+	src: url('../fonts/Vazirmatn-Black.woff2') format('woff2');
+	font-weight: 900;
 	font-style: normal;
 	font-display: swap;
 }
@@ -83,6 +97,7 @@
 html {
 	direction: rtl;
 	font-size: var(--es-font-size-base, 16px);
+	font-family: var(--es-font-body, 'Vazirmatn', Tahoma, sans-serif);
 	scroll-behavior: smooth;
 	-webkit-text-size-adjust: 100%;
 }
@@ -92,11 +107,38 @@ body {
 	padding: 0;
 	direction: rtl;
 	text-align: right;
-	font-family: var(--es-font-body);
+	font-family: var(--es-font-body, 'Vazirmatn', Tahoma, sans-serif);
 	background-color: var(--es-background);
 	color: var(--es-text);
-	line-height: 1.75;
+	line-height: 1.8;
 	overflow-x: hidden;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+button,
+input,
+select,
+textarea,
+optgroup,
+table,
+th,
+td,
+code,
+pre,
+kbd,
+samp,
+.es-btn,
+.es-pill,
+.es-badge,
+.es-tech-pill,
+.es-filter-pill,
+.woocommerce,
+.woocommerce button.button,
+.woocommerce a.button,
+.woocommerce input.button,
+#wpadminbar *:not(.ab-icon):not(.dashicons) {
+	font-family: var(--es-font-body, 'Vazirmatn', Tahoma, sans-serif);
 }
 
 .es-site-wrapper {
@@ -993,34 +1035,47 @@ img {
 
 .es-marquee-track-wrap,
 .es-marquee-track-wrapper {
-	overflow-x: auto;
-	scrollbar-width: none;
-	padding: 4px 24px;
-}
-
-.es-marquee-track-wrap::-webkit-scrollbar {
-	display: none;
+	direction: ltr;
+	overflow: hidden;
+	position: relative;
+	width: 100%;
+	padding: 6px 0;
+	mask-image: linear-gradient(90deg, transparent 0%, #000 8%, #000 92%, transparent 100%);
+	-webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 8%, #000 92%, transparent 100%);
 }
 
 .es-marquee-track {
 	display: flex;
 	align-items: center;
-	justify-content: center;
-	gap: 12px;
+	gap: 14px;
 	width: max-content;
-	margin-inline: auto;
+	animation: es-marquee-scroll 42s linear infinite;
+}
+
+.es-marquee-track:hover {
+	animation-play-state: paused;
+}
+
+@keyframes es-marquee-scroll {
+	0% {
+		transform: translate3d(0, 0, 0);
+	}
+	100% {
+		transform: translate3d(-33.3333%, 0, 0);
+	}
 }
 
 .es-city-pill {
+	direction: rtl;
 	display: inline-flex;
 	align-items: center;
 	gap: 8px;
-	padding: 8px 18px;
-	background: rgba(255, 255, 255, 0.03);
+	padding: 9px 20px;
+	background: rgba(255, 255, 255, 0.035);
 	border: 1px solid var(--es-border);
 	border-radius: 999px;
-	font-size: 0.88rem;
-	font-weight: 600;
+	font-size: 0.9rem;
+	font-weight: 700;
 	white-space: nowrap;
 	transition: all 0.2s ease;
 }
@@ -1370,12 +1425,13 @@ img {
 
 .es-family-showcase-grid {
 	display: grid;
-	grid-template-columns: repeat(5, 1fr);
-	gap: 18px;
+	grid-template-columns: repeat(6, 1fr);
+	gap: 22px;
 	margin-bottom: 48px;
 }
 
 .es-family-card {
+	grid-column: span 2;
 	background: var(--es-surface);
 	border: 1px solid var(--es-border);
 	border-radius: var(--es-radius);
@@ -1383,6 +1439,11 @@ img {
 	display: flex;
 	flex-direction: column;
 	transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.es-family-card:nth-child(1),
+.es-family-card:nth-child(2) {
+	grid-column: span 3;
 }
 
 .es-family-card:hover {
@@ -3215,7 +3276,9 @@ img {
 }
 
 .es-fullwidth-card,
-.es-myaccount-wrap {
+.es-myaccount-wrap,
+.es-about-page-hero,
+.es-about-vision-section {
 	width: 100%;
 }
 
@@ -3224,7 +3287,12 @@ img {
    ========================================================================== */
 @media (max-width: 1120px) {
 	.es-family-showcase-grid {
-		grid-template-columns: repeat(3, 1fr);
+		grid-template-columns: repeat(2, 1fr);
+	}
+	.es-family-card,
+	.es-family-card:nth-child(1),
+	.es-family-card:nth-child(2) {
+		grid-column: span 1;
 	}
 }
 

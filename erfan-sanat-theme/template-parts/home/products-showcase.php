@@ -13,48 +13,48 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-$shop_url = home_url( '/shop/' );
+$shop_url = erfan_sanat_get_page_url( 'shop' );
 
 $flagship_families = array(
 	array(
-		'title'    => 'درختان نوری هوشمند',
-		'models'   => array( 'دلسا', 'آرتام', 'آتریسا', 'ایلومینا' ),
-		'specs'    => array( '۱۶ میلیون رنگ', 'کنترل با اپلیکیشن', 'پیکسل RGB' ),
-		'image'    => ES_THEME_URI . 'assets/images/light-tree.jpg',
-		'url'      => home_url( '/product-category/urban-lighting-elements/light-trees/' ),
-		'badge'    => '',
+		'title'  => 'درختان نوری هوشمند',
+		'models' => array( 'دلسا', 'آرتام', 'آتریسا', 'ایلومینا' ),
+		'specs'  => array( '۱۶ میلیون رنگ', 'کنترل با اپلیکیشن', 'پیکسل RGB' ),
+		'image'  => ES_THEME_URI . 'assets/images/light-tree.jpg',
+		'url'    => erfan_sanat_get_term_url( 'light-trees', 'product_cat', $shop_url ),
+		'badge'  => 'هوشمند NRF',
 	),
 	array(
-		'title'    => 'خورشید‌نما',
-		'models'   => array( '۳۲ پره', '۴۸ پره' ),
-		'specs'    => array( 'قطر تا ۳.۳ متری', 'پروتکل NRF', '+۲۳۰۰ پیکسل' ),
-		'image'    => ES_THEME_URI . 'assets/images/sun-light.jpg',
-		'url'      => home_url( '/product-category/urban-lighting-elements/square-elements/' ),
-		'badge'    => '',
+		'title'  => 'خورشید‌نما',
+		'models' => array( '۳۲ پره', '۴۸ پره' ),
+		'specs'  => array( 'قطر تا ۳.۳ متری', 'پروتکل NRF', '+۲۳۰۰ پیکسل' ),
+		'image'  => ES_THEME_URI . 'assets/images/sun-light.jpg',
+		'url'    => erfan_sanat_get_term_url( 'square-elements', 'product_cat', $shop_url ),
+		'badge'  => 'مجهز به ساعت نجومی',
 	),
 	array(
-		'title'    => 'لوستر فضای باز',
-		'models'   => array( 'فروغ', 'شمسه' ),
-		'specs'    => array( 'ارتفاع تا ۷ متر', 'ریسه سوزنی LED' ),
-		'image'    => ES_THEME_URI . 'assets/images/chandelier.jpg',
-		'url'      => home_url( '/product-category/urban-lighting-elements/urban-chandeliers/' ),
-		'badge'    => '',
+		'title'  => 'لوستر فضای باز',
+		'models' => array( 'فروغ', 'شمسه' ),
+		'specs'  => array( 'ارتفاع تا ۷ متر', 'ریسه سوزنی LED', 'IP67' ),
+		'image'  => ES_THEME_URI . 'assets/images/chandelier.jpg',
+		'url'    => erfan_sanat_get_term_url( 'urban-chandeliers', 'product_cat', $shop_url ),
+		'badge'  => 'المان بلوار و میدان',
 	),
 	array(
-		'title'    => 'ریسه‌های LED',
-		'models'   => array( 'فندقی', 'بلوطی', 'سوزنی', 'فلکسی' ),
-		'specs'    => array( 'ضدضربه پلی‌کربنات', 'IP67', 'از ۱,۲۰۰,۰۰۰ تومان' ),
-		'image'    => ES_THEME_URI . 'assets/images/string-lights.jpg',
-		'url'      => home_url( '/product-category/decorative-light-strings/' ),
-		'badge'    => '🛒 قابل خرید',
+		'title'  => 'ریسه‌های LED',
+		'models' => array( 'فندقی', 'بلوطی', 'سوزنی', 'فلکسی' ),
+		'specs'  => array( 'ضدضربه پلی‌کربنات', 'IP67', 'از ۱,۲۰۰,۰۰۰ تومان' ),
+		'image'  => ES_THEME_URI . 'assets/images/string-lights.jpg',
+		'url'    => erfan_sanat_get_term_url( 'decorative-light-strings', 'product_cat', $shop_url ),
+		'badge'  => '🛒 قابل خرید آنلاین',
 	),
 	array(
-		'title'    => 'پوینت لایت پیکسل',
-		'models'   => array( 'LED 4 سانتی‌متری' ),
-		'specs'    => array( 'فول‌کالر هوشمند', 'قاب نگهدارنده PLT', 'IP68' ),
-		'image'    => ES_THEME_URI . 'assets/images/point-light.jpg',
-		'url'      => home_url( '/product-category/pixel-point-lights/' ),
-		'badge'    => 'ES',
+		'title'  => 'پوینت لایت پیکسل',
+		'models' => array( 'LED ۴ سانتی‌متری' ),
+		'specs'  => array( 'فول‌کالر هوشمند', 'قاب نگهدارنده PLT', 'IP68' ),
+		'image'  => ES_THEME_URI . 'assets/images/point-light.jpg',
+		'url'    => erfan_sanat_get_term_url( 'pixel-point-lights', 'product_cat', $shop_url ),
+		'badge'  => '🛒 قابل خرید آنلاین',
 	),
 );
 
@@ -92,7 +92,9 @@ $products_query = new WP_Query(
 					<div class="es-family-media">
 						<img src="<?php echo esc_url( $fam['image'] ); ?>" alt="<?php echo esc_attr( $fam['title'] ); ?>" loading="lazy" width="640" height="480" />
 						<?php if ( '' !== $fam['badge'] ) : ?>
-							<span class="es-badge es-badge-online"><?php echo esc_html( $fam['badge'] ); ?></span>
+							<span class="es-badge <?php echo str_contains( $fam['badge'], 'خرید' ) ? 'es-badge-online' : 'es-badge-inquiry'; ?>">
+								<?php echo esc_html( $fam['badge'] ); ?>
+							</span>
 						<?php endif; ?>
 					</div>
 					<div class="es-family-body">

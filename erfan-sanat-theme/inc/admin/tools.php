@@ -27,7 +27,7 @@ function erfan_sanat_seed_enterprise_demo_data(): array {
 		'pages'    => 0,
 	);
 
-	// 1. Seed Products covering online_cart, phone_inquiry, and official_tender.
+	// 1. Seed 9 Authentic Erfan Sanat Products covering online_cart, phone_inquiry, and official_tender.
 	$products_blueprint = array(
 		array(
 			'slug'    => 'baloti-dimensional-full-color',
@@ -44,7 +44,7 @@ function erfan_sanat_seed_enterprise_demo_data(): array {
 				'pa_body_material'    => array( 'polycarbonate' ),
 			),
 			'price'   => 18800000,
-			'img'     => ES_THEME_URI . 'assets/images/string-lights.jpg',
+			'img'     => 'string-lights.jpg',
 			'meta'    => array(
 				'_es_is_purchasable_online' => '1',
 				'_es_order_type'            => 'online_cart',
@@ -71,7 +71,7 @@ function erfan_sanat_seed_enterprise_demo_data(): array {
 				'pa_body_material'    => array( 'polycarbonate' ),
 			),
 			'price'   => 6100000,
-			'img'     => ES_THEME_URI . 'assets/images/string-lights.jpg',
+			'img'     => 'string-lights.jpg',
 			'meta'    => array(
 				'_es_is_purchasable_online' => '1',
 				'_es_order_type'            => 'online_cart',
@@ -98,7 +98,7 @@ function erfan_sanat_seed_enterprise_demo_data(): array {
 				'pa_body_material'    => array( 'galvanized-iron', 'polycarbonate' ),
 			),
 			'price'   => 0,
-			'img'     => ES_THEME_URI . 'assets/images/light-tree.jpg',
+			'img'     => 'light-tree.jpg',
 			'meta'    => array(
 				'_es_is_purchasable_online' => '0',
 				'_es_order_type'            => 'official_tender',
@@ -125,7 +125,7 @@ function erfan_sanat_seed_enterprise_demo_data(): array {
 				'pa_body_material'    => array( 'galvanized-iron', 'polycarbonate' ),
 			),
 			'price'   => 0,
-			'img'     => ES_THEME_URI . 'assets/images/sun-light.jpg',
+			'img'     => 'sun-light.jpg',
 			'meta'    => array(
 				'_es_is_purchasable_online' => '0',
 				'_es_order_type'            => 'phone_inquiry',
@@ -152,7 +152,7 @@ function erfan_sanat_seed_enterprise_demo_data(): array {
 				'pa_body_material'    => array( 'galvanized-iron' ),
 			),
 			'price'   => 0,
-			'img'     => ES_THEME_URI . 'assets/images/chandelier.jpg',
+			'img'     => 'chandelier.jpg',
 			'meta'    => array(
 				'_es_is_purchasable_online' => '0',
 				'_es_order_type'            => 'phone_inquiry',
@@ -179,7 +179,7 @@ function erfan_sanat_seed_enterprise_demo_data(): array {
 				'pa_body_material'    => array( 'polycarbonate', 'aluminum-diecast' ),
 			),
 			'price'   => 4850000,
-			'img'     => ES_THEME_URI . 'assets/images/point-light.jpg',
+			'img'     => 'point-light.jpg',
 			'meta'    => array(
 				'_es_is_purchasable_online' => '1',
 				'_es_order_type'            => 'online_cart',
@@ -232,15 +232,15 @@ function erfan_sanat_seed_enterprise_demo_data(): array {
 			'content' => '<p>پروژه تونل نوری ۹۰ درجه در شهر کرمان با ۵۰ دهانه فلزی مستحکم، فونداسیون بیس‌پلیت تقویت‌شده، سینی کابل گالوانیزه و ریسه‌های پیکسل ۴ سانتی فول‌کالر با ولتاژ ایمن ۱۲ ولت و درجه حفاظت IP67 اجرا شده است.</p>',
 			'cats'    => array( 'light-tunnels-walkways', 'urban-beautification' ),
 			'locs'    => array( 'other-cities' ),
-			'img'     => ES_THEME_URI . 'assets/images/light-tunnel.jpg',
+			'img'     => 'light-tunnel.jpg',
 			'meta'    => array(
 				'_es_project_client'       => 'شهرداری و سازمان زیباسازی کرمان',
 				'_es_completion_date'      => '۱۴۰۴/۰۹/۱۹',
 				'_es_total_pixel_count'    => 12500,
 				'_es_total_power_kw'       => 6.4,
 				'_es_before_after_gallery' => array(
-					ES_THEME_URI . 'assets/images/light-tunnel.jpg',
-					ES_THEME_URI . 'assets/images/point-light.jpg',
+					'light-tunnel.jpg',
+					'point-light.jpg',
 				),
 				'_es_project_drone_video'  => 'https://www.aparat.com/erfansanat',
 				'_es_project_map_coords'   => '30.2839, 57.0834',
@@ -253,15 +253,15 @@ function erfan_sanat_seed_enterprise_demo_data(): array {
 			'content' => '<p>پروژه نورپردازی شهری در استان اصفهان شامل طراحی و نصب گوی‌های نورانی حجمی و سقف نوری مکعبی با پوشش یکنواخت و مقاومت کامل در برابر تابش مستقیم آفتاب و بارندگی است.</p>',
 			'cats'    => array( 'urban-beautification', 'occasional-lighting-projects' ),
 			'locs'    => array( 'isfahan' ),
-			'img'     => ES_THEME_URI . 'assets/images/light-sphere.jpg',
+			'img'     => 'light-sphere.jpg',
 			'meta'    => array(
 				'_es_project_client'       => 'سازمان زیباسازی شهرداری اصفهان',
 				'_es_completion_date'      => '۱۴۰۳/۰۲/۲۰',
 				'_es_total_pixel_count'    => 9600,
 				'_es_total_power_kw'       => 4.8,
 				'_es_before_after_gallery' => array(
-					ES_THEME_URI . 'assets/images/light-sphere.jpg',
-					ES_THEME_URI . 'assets/images/light-element.jpg',
+					'light-sphere.jpg',
+					'light-element.jpg',
 				),
 				'_es_project_drone_video'  => 'https://www.aparat.com/erfansanat',
 				'_es_project_map_coords'   => '32.6539, 51.6660',
@@ -274,15 +274,15 @@ function erfan_sanat_seed_enterprise_demo_data(): array {
 			'content' => '<p>اجرای پروژه‌های نورپردازی در سواحل جنوب کشور (چابهار و جزیره کیش) نیازمند بالاترین سطح آب‌بندی و مقاومت در برابر خوردگی رطوبتی است که توسط تیم مهندسی عرفان صنعت اصفهان با موفقیت پیاده‌سازی گردید.</p>',
 			'cats'    => array( 'light-tunnels-walkways', 'parks-landscapes' ),
 			'locs'    => array( 'south-coasts' ),
-			'img'     => ES_THEME_URI . 'assets/images/light-element.jpg',
+			'img'     => 'light-element.jpg',
 			'meta'    => array(
 				'_es_project_client'       => 'منطقه آزاد چابهار و کیش',
 				'_es_completion_date'      => '۱۴۰۳/۱۰/۰۱',
 				'_es_total_pixel_count'    => 14200,
 				'_es_total_power_kw'       => 7.2,
 				'_es_before_after_gallery' => array(
-					ES_THEME_URI . 'assets/images/light-element.jpg',
-					ES_THEME_URI . 'assets/images/light-tunnel.jpg',
+					'light-element.jpg',
+					'light-tunnel.jpg',
 				),
 				'_es_project_drone_video'  => 'https://www.aparat.com/erfansanat',
 				'_es_project_map_coords'   => '25.2919, 60.6430',
@@ -323,11 +323,11 @@ function erfan_sanat_seed_enterprise_demo_data(): array {
 			'content' => '<p>در تجهیزات الکترونیکی و نورپردازی شهری که در فضای باز نصب می‌شوند، استاندارد بین‌المللی IEC 60529 (کد IP) میزان نفوذناپذیری محصول در برابر گردوغبار و آب را مشخص می‌کند. در محصولات عرفان صنعت اصفهان با بهره‌گیری از جوش اولتراسونیک و رزین پلی‌اورتان صنعتی، حفاظت واقعی IP67 و IP68 حاصل شده است.</p>',
 			'cats'    => array( 'lighting-standards' ),
 			'tags'    => array( 'ws2811-controller', 'voltage-drop-calculation' ),
-			'img'     => ES_THEME_URI . 'assets/images/point-light.jpg',
+			'img'     => 'point-light.jpg',
 			'meta'    => array(
 				'_es_reading_time_min'      => 7,
 				'_es_technical_reviewer'    => 'مهندس علی حیدری — سرپرست فنی عرفان صنعت',
-				'_es_software_project_file' => ES_THEME_URI . 'assets/images/sample-datasheet.pdf',
+				'_es_software_project_file' => 'sample-datasheet.pdf',
 				'_es_faq_schema_repeater'   => array(
 					array(
 						'question' => 'تفاوت اصلی استاندارد IP67 و IP68 در ریسه‌های نورپردازی چیست؟',
@@ -347,15 +347,35 @@ function erfan_sanat_seed_enterprise_demo_data(): array {
 			'content' => '<p>یکی از مزایای کلیدی کنترلرهای هوشمند شرکت دانش‌بنیان عرفان صنعت اصفهان، بهره‌گیری از ماژول ارتباطی بی‌سیم NRF و WiFi است که امکان همگام‌سازی صدها المان نوری را در طول بلوار یا تونل نوری تا فاصله ۲۰۰ متر بدون نیاز به کابل‌کشی دیتا بین پایه‌ها فراهم می‌سازد.</p>',
 			'cats'    => array( 'software-controllers-tutorials', 'troubleshooting-wiring' ),
 			'tags'    => array( 'ws2811-controller', 'dmx-addressing', 'voltage-drop-calculation' ),
-			'img'     => ES_THEME_URI . 'assets/images/wiring-schematic.jpg',
+			'img'     => 'wiring-schematic.jpg',
 			'meta'    => array(
 				'_es_reading_time_min'      => 9,
 				'_es_technical_reviewer'    => 'واحد تحقیق و توسعه (R&D) عرفان صنعت اصفهان',
-				'_es_software_project_file' => ES_THEME_URI . 'assets/images/sample-datasheet.pdf',
+				'_es_software_project_file' => 'sample-datasheet.pdf',
 				'_es_faq_schema_repeater'   => array(
 					array(
 						'question' => 'حداکثر برد همگام‌سازی بی‌سیم پروتکل NRF در کنترلرهای عرفان صنعت چقدر است؟',
 						'answer'   => 'در فضای باز شهری، ماژول‌های NRF تا فاصله ۲۰۰ متری بین هر کنترلر را به‌صورت کاملاً همگام پوشش می‌دهند.',
+					),
+				),
+			),
+		),
+		array(
+			'slug'    => 'urban-lighting-tree-selection-guide',
+			'title'   => 'اصول مهندسی انتخاب المان‌های نوری میادین و درختان نوری هوشمند در اقلیم‌های مختلف ایران',
+			'excerpt' => 'معرفی استانداردهای سازه فولادی، رنگ کوره‌ای الکترواستاتیک و مقاومت در برابر UV خورشید در المان‌های شهری.',
+			'content' => '<p>در طراحی المان‌های شهری و درختان نوری هوشمند، علاوه بر زیبایی بصری در شب، جلوه روزانه سازه، مقاومت در برابر باد و طوفان و پایداری رنگ حباب‌های پلی‌کربنات در برابر تابش مستقیم خورشید اهمیت حیاتی دارد.</p>',
+			'cats'    => array( 'lighting-standards' ),
+			'tags'    => array( 'ws2811-controller' ),
+			'img'     => 'light-tree.jpg',
+			'meta'    => array(
+				'_es_reading_time_min'      => 6,
+				'_es_technical_reviewer'    => 'مهندس محمدعلی قربانی — مدیر فروش و پروژه‌ها',
+				'_es_software_project_file' => 'sample-datasheet.pdf',
+				'_es_faq_schema_repeater'   => array(
+					array(
+						'question' => 'آیا درختان نوری هوشمند عرفان صنعت قابلیت برنامه‌ریزی مناسبتی دارند؟',
+						'answer'   => 'بله، از طریق اپلیکیشن اندروید و ارتباط WiFi می‌توانید در اعیاد ملی و مذهبی یا ایام محرم، رنگ و انیمیشن کل درختان نوری را با یک لمس تغییر دهید.',
 					),
 				),
 			),
@@ -395,7 +415,7 @@ function erfan_sanat_seed_enterprise_demo_data(): array {
 		}
 	}
 
-	// 4. Seed Standard Pages (`contact`, `blog`, `about`, `cart`, `checkout`, `my-account`).
+	// 4. Seed Standard Pages (`contact`, `blog`, `about`, `projects`, `shop`, `cart`, `checkout`, `my-account`).
 	$pages_blueprint = array(
 		'contact' => array(
 			'title'    => 'تماس با ما و استعلام قیمت',
@@ -409,8 +429,18 @@ function erfan_sanat_seed_enterprise_demo_data(): array {
 		),
 		'about' => array(
 			'title'    => 'درباره شرکت دانش‌بنیان عرفان صنعت اصفهان',
-			'template' => 'templates/template-fullwidth.php',
-			'content'  => '<p>شرکت دانش‌بنیان عرفان صنعت اصفهان با بیش از ۲۵ سال تجربه و گواهینامه بین‌المللی ISO 9001:2015، پیشگام در طراحی، تولید و اجرای پروژه‌های روشنایی شهری، المان‌های نوری حجمی و سیستم‌های کنترل هوشمند در ایران است.</p>',
+			'template' => 'templates/template-about.php',
+			'content'  => '<p>شرکت دانش‌بنیان عرفان صنعت اصفهان (تأسیس ۱۳۷۸) با بیش از ۲۵ سال تجربه مستمر و دارا بودن گواهینامه بین‌المللی مدیریت کیفیت ISO 9001:2015، پیشگام در طراحی، تولید و اجرای پروژه‌های روشنایی شهری، المان‌های نوری حجمی، تونل‌های نوری و سیستم‌های کنترل هوشمند در ایران است.</p>',
+		),
+		'projects' => array(
+			'title'    => 'پروژه‌های نورپردازی شهری',
+			'template' => 'templates/template-projects.php',
+			'content'  => '<p>نمونه‌کارهای اجرایی شرکت دانش‌بنیان عرفان صنعت اصفهان در شهرداری‌ها و شهرهای سراسر کشور.</p>',
+		),
+		'shop' => array(
+			'title'    => 'فروشگاه تجهیزات نورپردازی شهری',
+			'template' => 'templates/template-products.php',
+			'content'  => '<p>کاتالوگ و فروشگاه آنلاین محصولات نورپردازی شهری، ریسه‌های بلوطی و فندقی، درختان نوری و المان‌های شهری عرفان صنعت اصفهان.</p>',
 		),
 		'cart' => array(
 			'title'    => 'سبد خرید تجهیزات نورپردازی',
@@ -449,10 +479,26 @@ function erfan_sanat_seed_enterprise_demo_data(): array {
 	}
 
 	flush_rewrite_rules();
+	update_option( 'erfan_sanat_seeded_version', ES_THEME_VERSION, true );
 
 	return $counts;
 }
 add_action( 'after_switch_theme', 'erfan_sanat_seed_enterprise_demo_data', 20 );
+
+/**
+ * Automatically ensures demo data, pages, terms, and rewrite rules are seeded
+ * when the theme is installed or updated to a new version (even if replaced while active).
+ */
+function erfan_sanat_maybe_auto_seed_on_init(): void {
+	if ( wp_installing() ) {
+		return;
+	}
+	$seeded_ver = (string) get_option( 'erfan_sanat_seeded_version', '' );
+	if ( $seeded_ver !== ES_THEME_VERSION ) {
+		erfan_sanat_seed_enterprise_demo_data();
+	}
+}
+add_action( 'init', 'erfan_sanat_maybe_auto_seed_on_init', 30 );
 
 /**
  * Alias for `erfan_sanat_seed_enterprise_demo_data()`.
