@@ -1,0 +1,26 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Erfan Sanat Isfahan Enterprise 1.0.0\n"
+"Report-Msgid-Bugs-To: https://erfansanat.com/\n"
+"POT-Creation-Date: 2026-10-03 00:00+0000\n"
+"PO-Revision-Date: 2026-10-03 00:00+0000\n"
+"Last-Translator: Erfan Sanat Isfahan Engineering Team <info@erfansanat.com>\n"
+"Language-Team: Persian <fa_IR>\n"
+"Language: fa_IR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n==0 || n==1);\n"
+"X-Domain: erfan-sanat\n"
+
+msgid "پرش به محتوای اصلی"
+msgstr "پرش به محتوای اصلی"
+
+msgid "فروشگاه محصولات"
+msgstr "فروشگاه محصولات"
+
+msgid "پروژه‌های نورپردازی شهری"
+msgstr "پروژه‌های نورپردازی شهری"
+
+msgid "مشاوره رایگان و استعلام قیمت"
+msgstr "مشاوره رایگان و استعلام قیمت"

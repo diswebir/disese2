@@ -1,0 +1,13 @@
+/*
+ * Erfan Sanat Enterprise Theme — Native RTL Support & Persian Typography
+ */
+html,
+body,
+button,
+input,
+select,
+textarea {
+	direction: rtl;
+	text-align: right;
+	font-family: var(--es-font-body, 'Vazirmatn', Tahoma, sans-serif);
+}
